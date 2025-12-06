@@ -1,0 +1,77 @@
+/* Estilos para la página de la heladería */
+:root{
+	--card-bg: rgba(255,255,255,0.9);
+	--accent: #e76f51;
+	--muted: #666;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Segoe UI, Roboto, Arial, sans-serif}
+body{
+	padding:24px;color:#222;background-color:#f7f7f7;
+}
+
+.container{max-width:1100px;margin:0 auto;position:relative;z-index:0;padding:18px;border-radius:10px;overflow:hidden}
+
+/* Pseudo-elemento para mostrar la imagen de fondo dentro de la sección .container */
+.container::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: url('frontend/img/background.jpg') center center / cover no-repeat;
+	z-index: -1;
+}
+
+/* Mantener una capa semitransparente encima de la imagen para legibilidad */
+.container::after{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(255,255,255,0.85);
+	z-index: 0;
+}
+
+/* Asegurar que el contenido quede por encima de la capa blanca */
+.container > *{position:relative;z-index:1}
+h1{text-align:center;margin:0 0 12px}
+.controls{display:flex;gap:16px;align-items:flex-start}
+.form-card,.search-card{background:var(--card-bg);padding:12px;border-radius:8px;flex:1}
+.form-card h2,.search-card h2{margin-top:0}
+label{display:block;margin-bottom:8px}
+input[type="text"],input[type="number"]{width:100%;padding:8px;border:1px solid #ccc;border-radius:6px}
+.helados-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.helado-opcion{display:flex;align-items:center;gap:8px;background:#fff;padding:6px;border-radius:6px;border:1px solid #eee}
+.helado-opcion img{width:64px;height:64px;object-fit:cover;border-radius:6px}
+.helado-opcion .meta{flex:1}
+.helado-opcion input[type="number"]{width:70px}
+.actions{display:flex;gap:8px;margin-top:10px}
+button{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+button:hover{opacity:0.95}
+.queue{margin-top:14px}
+.lista-turnos{list-style:none;padding:0;margin:0}
+.turno-item{display:flex;justify-content:space-between;padding:10px;border-bottom:1px solid #eee}
+.turno-item .items{font-size:0.9em;color:var(--muted)}
+.resultado{margin-top:10px;padding:8px;background:#fff;border-radius:6px;border:1px solid #eee}
+
+@media(max-width:800px){
+	.controls{flex-direction:column}
+	.helados-grid{grid-template-columns:repeat(1,1fr)}
+}
+
+/* Estilos para los frames (dos paneles) */
+.frames{display:flex;gap:16px;align-items:flex-start}
+.frame{background:var(--card-bg);padding:12px;border-radius:8px;flex:1;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.frame-left{min-width:320px}
+.frame-right{min-width:360px}
+
+@media(max-width:900px){
+	.frames{flex-direction:column}
+}
+
+/* Label grande para mostrar el turno actual */
+.turno-actual{display:block}
+.turno-num{font-size:30px;font-weight:700;color:var(--accent);}
+
+/* Resaltar (franjar) el elemento de la lista que corresponde al turno actual */
+.turno-actual-item{background: linear-gradient(90deg, rgba(231,111,81,0.08) 0%, rgba(231,111,81,0.03) 100%); border-left:6px solid var(--accent);padding-left:10px}
+.turno-actual-item .items{color:var(--muted);}
+

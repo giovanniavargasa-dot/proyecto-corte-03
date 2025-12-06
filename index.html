@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Heladería - Administración de Turnos</title>
+    <link rel="stylesheet" href="frontend/style.css">
+    <!-- Font Awesome (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMXc7b4q1Zqf1h1Yw5e1q0XK5Q5q5q5q5q5q5q" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="background-image: url('./frontend/img/background.jpg');background-repeat: no-repeat;background-size: cover;">
+    <main class="container">
+        <h1>Heladería GIO <i class="fa-solid fa-ice-cream" aria-hidden="true"></i> - Turnos por Orden de Llegada</h1>
+
+        <!-- Dos marcos: izquierdo para registro, derecho para cola y búsqueda -->
+        <section class="frames">
+            <div class="frame frame-left">
+                <div class="form-card">
+                    <h2>Registrar pedido</h2>
+                    <label>Nombre del cliente
+                        <input id="clienteNombre" type="text" placeholder="Ej: Ana Pérez">
+                    </label>
+
+                    <h3>Opciones de helado</h3>
+                    <div class="helados-grid" id="opcionesHelado">
+                        <!-- Opciones generadas por JS con imágenes en frontend/img -->
+                    </div>
+
+                    <div class="actions">
+                        <button id="btnInsertar">Insertar pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frame frame-right">
+                <div class="search-card">
+                    <h2>Buscar / Eliminar</h2>
+                    <label>Buscar por número de turno
+                        <input id="buscarTurno" type="number" min="1" placeholder="Número de turno">
+                    </label>
+                    <div class="actions">
+                        <button id="btnBuscar">Buscar pedido</button>
+                        <button id="btnEliminar">Eliminar pedido</button>
+                    </div>
+                    <div id="resultadoBusqueda" class="resultado"></div>
+                </div>
+
+                <div class="turno-actual" style="text-align:center;margin:8px 0;">
+                    <label id="turnoActual" class="turno-num">-</label>
+                </div>
+
+                <div style="margin:12px 0;text-align:center;">
+                    <button id="btnAtender">Atender siguiente</button>
+                </div>
+
+                <div class="queue">
+                    <h2>Cola de atención</h2>
+                    <ul id="listaTurnos" class="lista-turnos"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="frontend/scrpit.js"></script>
+</body>
+</html>
